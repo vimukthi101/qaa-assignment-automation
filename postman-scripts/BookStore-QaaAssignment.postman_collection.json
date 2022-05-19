@@ -1,0 +1,2079 @@
+{
+  "info": {
+    "_postman_id": "758e2ed1-fb16-4d07-bd98-0f779fae2e7b",
+    "name": "BookStore-QaaAssignment",
+    "description": "Book Store API of Qaa Assignment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GetBooks",
+      "item": [
+        {
+          "name": "GetAllBooks",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 1 title\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Christ Recrucified\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 2 title\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Princess Isambo\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}{{getBooks}}",
+              "host": [
+                "{{host}}{{getBooks}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InvalidHTTPMethod",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 405\", function () {\r",
+                  "    pm.response.to.have.status(405);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Request method 'DELETE' not supported\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 2\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Method Not Allowed\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{host}}{{getBooks}}",
+              "host": [
+                "{{host}}{{getBooks}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "FindBooksByTitle",
+      "item": [
+        {
+          "name": "FindBookByTitle",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 1 title\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"test world vimukthi\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 2 id\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"24\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}{{findBooksByTitle}}{{searchKey}}",
+              "host": [
+                "{{host}}{{findBooksByTitle}}{{searchKey}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InvalidHttpMethod",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 405\", function () {\r",
+                  "    pm.response.to.have.status(405);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Request method 'DELETE' not supported\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 2\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Method Not Allowed\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{host}}{{findBooksByTitle}}{{searchKey}}",
+              "host": [
+                "{{host}}{{findBooksByTitle}}{{searchKey}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "WithoutASearchValue",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 1 title\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"test world vimukthi\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 2 id\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"24\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}{{findBooksByTitle}}",
+              "host": [
+                "{{host}}{{findBooksByTitle}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "WithoutANonMatchingValue",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}{{findBooksByTitle}}>",
+              "host": [
+                "{{host}}{{findBooksByTitle}}>"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "WithoutTheKey",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Required String parameter 'title' is not present\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 2\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/api/books?",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "books"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "WithInvalidKey",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Required String parameter 'title' is not present\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 2\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/api/books?year=2022",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "books"
+              ],
+              "query": [
+                {
+                  "key": "year",
+                  "value": "2022"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "FindBookByID",
+      "item": [
+        {
+          "name": "FindBookByID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 1 title\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"test world vimukthi\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 1 id\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"26\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}{{searchId}}",
+              "host": [
+                "{{host}}{{searchId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InvalidHttpMethod",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 405\", function () {\r",
+                  "    pm.response.to.have.status(405);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Request method 'DELETE' not supported\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 2\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Method Not Allowed\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{host}}{{searchId}}",
+              "host": [
+                "{{host}}{{searchId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InvalidID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 404\", function () {\r",
+                  "    pm.response.to.have.status(404);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Book not found exception\");\r",
+                  "});\r",
+                  "pm.test(\"Your test name\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.code).to.eql(1);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/1000",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "1000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "StringAsID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+                  "});\r",
+                  "pm.test(\"Your test name\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.status).to.eql(400);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/abc",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "abc"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "FindGatewayByID",
+      "item": [
+        {
+          "name": "FindGatewayByID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 1 title\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"test world vimukthi\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 1 id\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"26\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}{{findGatewayByID}}",
+              "host": [
+                "{{host}}{{findGatewayByID}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InvalidHttpMethod",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 405\", function () {\r",
+                  "    pm.response.to.have.status(405);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Request method 'DELETE' not supported\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 2\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Method Not Allowed\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}{{findGatewayByID}}",
+              "host": [
+                "{{host}}{{findGatewayByID}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InvalidId",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 404\", function () {\r",
+                  "    pm.response.to.have.status(404);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Book not found exception\");\r",
+                  "});\r",
+                  "pm.test(\"Your test name\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.code).to.eql(1);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/1000/gateway",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "1000",
+                "gateway"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "StringAsID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+                  "});\r",
+                  "pm.test(\"Your test name\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.status).to.eql(400);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/abc/gateway",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "abc",
+                "gateway"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "CreateNewBook",
+      "item": [
+        {
+          "name": "CreateNewBook",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 1 title\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"test book\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 1 category\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"COMEDY\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}",
+              "host": [
+                "{{host}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InvalidHttpMethod",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 405\", function () {\r",
+                  "    pm.response.to.have.status(405);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Request method 'DELETE' not supported\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 2\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Method Not Allowed\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}{{createBooks}}",
+              "host": [
+                "{{host}}{{createBooks}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "WithoutTitle",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error reason\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Title cannot be empty\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error message\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.error).to.eql(\"Bad Request\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error status code\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.status).to.eql(400);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}",
+              "host": [
+                "{{host}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "WithoutAuthorID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error reason\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"AuthorId cannot be empty\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error message\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.error).to.eql(\"Bad Request\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error status code\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.status).to.eql(400);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"year\": \"2022\",\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}",
+              "host": [
+                "{{host}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "WithoutCategory",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error reason\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Category cannot be empty\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error message\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.error).to.eql(\"Bad Request\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error status code\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.status).to.eql(400);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}",
+              "host": [
+                "{{host}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "WithoutYear",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 1 title\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"test book\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 1 category\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"COMEDY\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"authorId\": 1,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}",
+              "host": [
+                "{{host}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EmptyTitle",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error reason\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Title cannot be empty\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error message\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.error).to.eql(\"Bad Request\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error status code\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.status).to.eql(400);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": null,\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}",
+              "host": [
+                "{{host}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EmptyAuthorID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error reason\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"AuthorId cannot be empty\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error message\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.error).to.eql(\"Bad Request\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error status code\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.status).to.eql(400);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"year\": \"2022\",\r\n  \"authorId\": null,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}",
+              "host": [
+                "{{host}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EmptyCategory",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error reason\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Category cannot be empty\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error message\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.error).to.eql(\"Bad Request\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error status code\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.status).to.eql(400);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1,\r\n  \"category\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}",
+              "host": [
+                "{{host}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EmptyYear",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 1 title\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"test book\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 1 category\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"COMEDY\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"year\": null,\r\n  \"authorId\": 1,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}",
+              "host": [
+                "{{host}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InvalidValueTypes",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error reason\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Invalid JSON input\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error message\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.error).to.eql(\"Bad Request\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error status code\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.status).to.eql(400);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": 1123,\r\n  \"year\": 1233,\r\n  \"authorId\": \"abc\",\r\n  \"category\": 12\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}",
+              "host": [
+                "{{host}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "LessThanMinCharsForTitle Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Title should have at least 8 characters\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 2\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"12\",\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}",
+              "host": [
+                "{{host}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "MoreThanMaxCharsForTitle",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Title should be less than \");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 2\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789\",\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}",
+              "host": [
+                "{{host}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InvalidCategory",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Category \");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 2\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1,\r\n  \"category\": \"ME\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}",
+              "host": [
+                "{{host}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InvalidAuthorID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"AuthorId \");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 2\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1000,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}",
+              "host": [
+                "{{host}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "CreateGateway",
+      "item": [
+        {
+          "name": "CreateGateway",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 1 title\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"test book\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 1 category\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"COMEDY\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}{{createGateway}}",
+              "host": [
+                "{{host}}{{createGateway}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InvalidHttpMethod",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 405\", function () {\r",
+                  "    pm.response.to.have.status(405);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Request method 'DELETE' not supported\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 2\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Method Not Allowed\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}{{createGateway}}",
+              "host": [
+                "{{host}}{{createGateway}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "WithoutTitle",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error reason\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Title cannot be empty\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error message\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.error).to.eql(\"Bad Request\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error status code\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.status).to.eql(400);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}{{createGateway}}",
+              "host": [
+                "{{host}}{{createGateway}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "WithoutAuthorID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error reason\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"AuthorId cannot be empty\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error message\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.error).to.eql(\"Bad Request\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error status code\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.status).to.eql(400);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"year\": \"2022\",\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}{{createGateway}}",
+              "host": [
+                "{{host}}{{createGateway}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "WithoutCategory",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error reason\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Category cannot be empty\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error message\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.error).to.eql(\"Bad Request\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error status code\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.status).to.eql(400);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}{{createGateway}}",
+              "host": [
+                "{{host}}{{createGateway}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "WithoutYear",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 1 title\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"test book\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 1 category\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"COMEDY\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"authorId\": 1,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}{{createGateway}}",
+              "host": [
+                "{{host}}{{createGateway}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EmptyTitle",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error reason\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Title cannot be empty\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error message\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.error).to.eql(\"Bad Request\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error status code\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.status).to.eql(400);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": null,\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}{{createGateway}}",
+              "host": [
+                "{{host}}{{createGateway}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EmptyAuthorID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error reason\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"AuthorId cannot be empty\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error message\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.error).to.eql(\"Bad Request\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error status code\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.status).to.eql(400);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"year\": \"2022\",\r\n  \"authorId\": null,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}{{createGateway}}",
+              "host": [
+                "{{host}}{{createGateway}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EmptyCategory",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error reason\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Category cannot be empty\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error message\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.error).to.eql(\"Bad Request\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error status code\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.status).to.eql(400);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1,\r\n  \"category\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}{{createGateway}}",
+              "host": [
+                "{{host}}{{createGateway}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EmptyYear",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 1 title\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"test book\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains book 1 category\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"COMEDY\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"year\": null,\r\n  \"authorId\": 1,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}{{createGateway}}",
+              "host": [
+                "{{host}}{{createGateway}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InvalidValueTypes",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error reason\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Invalid JSON input\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error message\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.error).to.eql(\"Bad Request\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains error status code\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.status).to.eql(400);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": 1123,\r\n  \"year\": 1233,\r\n  \"authorId\": \"abc\",\r\n  \"category\": 12\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}{{createGateway}}",
+              "host": [
+                "{{host}}{{createGateway}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "LessThanMinCharsForTitle Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Title should have at least 8 characters\");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 2\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"12\",\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}{{createGateway}}",
+              "host": [
+                "{{host}}{{createGateway}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "MoreThanMaxCharsForTitle",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Title should be less than \");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 2\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789121234578901234678923456789\",\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}{{createGateway}}",
+              "host": [
+                "{{host}}{{createGateway}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InvalidCategory",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Category \");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 2\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1,\r\n  \"category\": \"ME\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}{{createGateway}}",
+              "host": [
+                "{{host}}{{createGateway}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InvalidAuthorID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 1\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"AuthorId \");\r",
+                  "});\r",
+                  "pm.test(\"Verify response body contains Error 2\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Bad Request\");\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test book\",\r\n  \"year\": \"2022\",\r\n  \"authorId\": 1000,\r\n  \"category\": \"COMEDY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}{{createGateway}}",
+              "host": [
+                "{{host}}{{createGateway}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "host",
+      "value": "http://localhost:8080/api/books"
+    },
+    {
+      "key": "getBooks",
+      "value": "/"
+    },
+    {
+      "key": "findBooksByTitle",
+      "value": "?title="
+    },
+    {
+      "key": "createGateway",
+      "value": "/gateway"
+    },
+    {
+      "key": "findGatewayByID",
+      "value": "/25/gateway"
+    },
+    {
+      "key": "searchKey",
+      "value": "test"
+    },
+    {
+      "key": "searchId",
+      "value": "/26"
+    }
+  ]
+}
