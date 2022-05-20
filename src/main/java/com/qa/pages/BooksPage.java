@@ -39,8 +39,22 @@ public class BooksPage extends Controller {
         return this;
     }
 
+    public BooksPage clickEditLinkForGivenBookByRowNumber(int index) {
+        clickEditInTableByRowNumber(BOOKS_TABLE, index);
+        return this;
+    }
+
+    public String getBookTitleByRowNumber(int index) {
+        return getBookNameByRowNumber(BOOKS_TABLE, index);
+    }
+
     public BooksPage clickDeleteLinkForGivenBookByTitle(String title) {
         clickDeleteInTableByBookTitle(BOOKS_TABLE, title);
+        return this;
+    }
+
+    public BooksPage clickDeleteLinkForGivenBookByRowNumber(int index) {
+        clickDeleteInTableByRowNumber(BOOKS_TABLE, index);
         return this;
     }
 

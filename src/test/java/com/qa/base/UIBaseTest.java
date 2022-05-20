@@ -1,18 +1,18 @@
 package com.qa.base;
 
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
 public class UIBaseTest extends UIBasePage {
 
-    @BeforeTest
+    @BeforeClass
     public void openBrowser() {
         initWebDriver();
         openPage();
         maximizeWindow();
     }
 
-    @AfterTest
+    @AfterClass
     public void closeBrowser() {
         quitWebDriver();
     }
