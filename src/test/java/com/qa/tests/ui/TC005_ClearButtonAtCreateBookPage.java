@@ -1,4 +1,4 @@
-package com.qa.tests;
+package com.qa.tests.ui;
 
 import com.qa.base.UIBaseTest;
 import com.qa.pages.BooksPage;

@@ -1,8 +1,7 @@
-package com.qa.tests;
+package com.qa.tests.ui;
 
 import com.qa.base.UIBaseTest;
 import com.qa.pages.BooksPage;
-import com.qa.pages.ErrorPage;
 import com.qa.pages.HomePage;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
@@ -10,29 +9,28 @@ import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static io.qameta.allure.SeverityLevel.BLOCKER;
+import static io.qameta.allure.SeverityLevel.NORMAL;
 
-public class TC001_TraverseUsingNavBar extends UIBaseTest {
+public class TC008_DeleteBook extends UIBaseTest {
     private static final String HOME_BODY_CONTENT = "Hello Test Automation Engineer!!";
     private static final String APPLICATION_TITLE = "Project name";
     private static final String BOOKS_PAGE_TITLE = "Books";
-    private static final String ERROR_MESSAGE = "Whitelabel Error Page";
+    private static final int BOOK_ROW_NUMBER = 3;
     HomePage homePage = new HomePage();
     BooksPage booksPage = new BooksPage();
-    ErrorPage errorPage = new ErrorPage();
 
     @Test
-    @Description("Verify the nav bar items")
-    @Severity(BLOCKER)
-    @Story("As a user, I should be able to traverse between pages using the options in nav bar")
-    public void verifyNavBar() {
+    @Description("Verify the Delete option for book")
+    @Severity(NORMAL)
+    @Story("As a user, I should be able to delete a book")
+    public void verifyDeleteBookFlow() {
         verifyHomePageIsLoaded();
         clickBooksLink();
         verifyBooksPageIsLoaded();
-        clickNavBarTitle();
-        verifyHomePageIsLoaded();
-        clickAuthorsLink();
-        verifyErrorPageIsLoaded();
+        int countBefore = getTotalBookCount();
+        clickDeleteLink();
+        int countAfter = getTotalBookCount();
+        verifyBookCount(countBefore, countAfter);
     }
 
     private void verifyHomePageIsLoaded() {
@@ -53,7 +51,7 @@ public class TC001_TraverseUsingNavBar extends UIBaseTest {
     }
 
     private void clickBooksLink() {
-        homePage.getNavBar().clickBooksLink();
+        homePage.getLeftMenuPanel().clickBooksLink();
     }
 
     private void verifyBooksPageIsLoaded() {
@@ -65,15 +63,15 @@ public class TC001_TraverseUsingNavBar extends UIBaseTest {
         return booksPage.getPageTitle();
     }
 
-    private void clickNavBarTitle() {
-        booksPage.getNavBar().clickNavBarTitle();
+    private int getTotalBookCount() {
+        return booksPage.getTotalBookCount();
     }
 
-    private void clickAuthorsLink() {
-        homePage.getNavBar().clickAuthorsLink();
+    private void clickDeleteLink() {
+        booksPage.clickDeleteLinkForGivenBookByRowNumber(BOOK_ROW_NUMBER);
     }
 
-    private void verifyErrorPageIsLoaded() {
-        Assert.assertEquals(errorPage.getErrorMessage(), ERROR_MESSAGE);
+    private void verifyBookCount(int countBefore, int countAfter) {
+        Assert.assertEquals(countAfter, countBefore - 1);
     }
 }

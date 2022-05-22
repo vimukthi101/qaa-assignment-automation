@@ -12,6 +12,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <application.host>http://localhost:8080/</application.host>
+        <api.base>api/books</api.base>
         <application.selenium.driver>chrome</application.selenium.driver>
     </properties>
 
@@ -44,7 +45,6 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>5.0.0</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>

@@ -8,11 +8,12 @@ public class EnvSettings {
     private static Properties envProperties;
     private static final String APPLICATION_HOST_PROP_KEY = "application.host";
     private static final String APPLICATION_SELENIUM_DRIVER_PROP_KEY = "application.selenium.driver";
+    private static final String API_BASE_END_POINT = "api.base";
 
     public static EnvSettings getInstance() {
         if (instance == null) {
             instance = new EnvSettings();
-            loadFileByPath("selenium.properties");
+            loadFileByPath("application.properties");
         }
         return instance;
     }
@@ -34,5 +35,9 @@ public class EnvSettings {
 
     public String getBrowser() {
         return envProperties.getProperty(APPLICATION_SELENIUM_DRIVER_PROP_KEY);
+    }
+
+    public String getApiBaseEndPoint() {
+        return envProperties.getProperty(API_BASE_END_POINT);
     }
 }

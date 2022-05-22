@@ -1,4 +1,4 @@
-package com.qa.tests;
+package com.qa.tests.ui;
 
 import com.qa.base.UIBaseTest;
 import com.qa.pages.BooksPage;
@@ -10,27 +10,28 @@ import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static io.qameta.allure.SeverityLevel.CRITICAL;
+import static io.qameta.allure.SeverityLevel.BLOCKER;
 
-public class TC002_VerifyTheSearchBar extends UIBaseTest {
+public class TC001_TraverseUsingNavBar extends UIBaseTest {
     private static final String HOME_BODY_CONTENT = "Hello Test Automation Engineer!!";
     private static final String APPLICATION_TITLE = "Project name";
     private static final String BOOKS_PAGE_TITLE = "Books";
-    private static final String SEARCH_TEXT = "Christ Recrucified";
     private static final String ERROR_MESSAGE = "Whitelabel Error Page";
     HomePage homePage = new HomePage();
     BooksPage booksPage = new BooksPage();
     ErrorPage errorPage = new ErrorPage();
 
     @Test
-    @Description("Verify the search bar")
-    @Severity(CRITICAL)
-    @Story("As a user, I should be able to serach for content using the search bar in the nav bar")
-    public void verifySearchBar() {
+    @Description("Verify the nav bar items")
+    @Severity(BLOCKER)
+    @Story("As a user, I should be able to traverse between pages using the options in nav bar")
+    public void verifyNavBar() {
         verifyHomePageIsLoaded();
         clickBooksLink();
         verifyBooksPageIsLoaded();
-        searchByTitle();
+        clickNavBarTitle();
+        verifyHomePageIsLoaded();
+        clickAuthorsLink();
         verifyErrorPageIsLoaded();
     }
 
@@ -64,8 +65,12 @@ public class TC002_VerifyTheSearchBar extends UIBaseTest {
         return booksPage.getPageTitle();
     }
 
-    private void searchByTitle() {
-        booksPage.getNavBar().inputTextToSearchField(SEARCH_TEXT).clickSearchButton();
+    private void clickNavBarTitle() {
+        booksPage.getNavBar().clickNavBarTitle();
+    }
+
+    private void clickAuthorsLink() {
+        homePage.getNavBar().clickAuthorsLink();
     }
 
     private void verifyErrorPageIsLoaded() {

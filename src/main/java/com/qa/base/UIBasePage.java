@@ -15,7 +15,6 @@ public class UIBasePage {
     private static final String URL = EnvSettings.getInstance().getHost();
 
     public void initWebDriver() {
-        System.out.println(BROWSER + " " + URL);
         if (BROWSER.equals("chrome")) {
             ChromeDriverManager.chromedriver().setup();
             driver = new ChromeDriver();

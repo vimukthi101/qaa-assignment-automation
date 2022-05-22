@@ -3,14 +3,24 @@
 <suite name="QaaAssignment">
     <test name="Task-01">
         <classes>
-            <class name="com.qa.tests.TC001_TraverseUsingNavBar"></class>
-            <class name="com.qa.tests.TC002_VerifyTheSearchBar"></class>
-            <class name="com.qa.tests.TC003_TraverseUsingLeftMenuPanel"></class>
-            <class name="com.qa.tests.TC004_CreateNewBook"></class>
-            <class name="com.qa.tests.TC005_ClearButtonAtCreateBookPage"></class>
-            <class name="com.qa.tests.TC006_EditBook"></class>
-            <class name="com.qa.tests.TC007_ClearButtonAtEditBook"></class>
-            <class name="com.qa.tests.TC008_DeleteBook"></class>
+            <class name="com.qa.tests.ui.TC001_TraverseUsingNavBar"></class>
+            <class name="com.qa.tests.ui.TC002_VerifyTheSearchBar"></class>
+            <class name="com.qa.tests.ui.TC003_TraverseUsingLeftMenuPanel"></class>
+            <class name="com.qa.tests.ui.TC004_CreateNewBook"></class>
+            <class name="com.qa.tests.ui.TC005_ClearButtonAtCreateBookPage"></class>
+            <class name="com.qa.tests.ui.TC006_EditBook"></class>
+            <class name="com.qa.tests.ui.TC007_ClearButtonAtEditBook"></class>
+            <class name="com.qa.tests.ui.TC008_DeleteBook"></class>
+        </classes>
+    </test>
+    <test name="Task-02">
+        <classes>
+            <class name="com.qa.tests.api.TC001_GetBooksApi"></class>
+            <class name="com.qa.tests.api.TC002_GetBookByTitleApi"></class>
+            <class name="com.qa.tests.api.TC003_GetBooksByIdApi"></class>
+            <class name="com.qa.tests.api.TC004_GetGateway"></class>
+            <class name="com.qa.tests.api.TC005_CreateBooksApi"></class>
+            <class name="com.qa.tests.api.TC006_CreateGateway"></class>
         </classes>
     </test>
 </suite>

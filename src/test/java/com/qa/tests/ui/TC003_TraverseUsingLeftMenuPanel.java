@@ -1,7 +1,8 @@
-package com.qa.tests;
+package com.qa.tests.ui;
 
 import com.qa.base.UIBaseTest;
 import com.qa.pages.BooksPage;
+import com.qa.pages.ErrorPage;
 import com.qa.pages.HomePage;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
@@ -9,28 +10,29 @@ import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static io.qameta.allure.SeverityLevel.NORMAL;
+import static io.qameta.allure.SeverityLevel.BLOCKER;
 
-public class TC008_DeleteBook extends UIBaseTest {
+public class TC003_TraverseUsingLeftMenuPanel extends UIBaseTest {
     private static final String HOME_BODY_CONTENT = "Hello Test Automation Engineer!!";
     private static final String APPLICATION_TITLE = "Project name";
     private static final String BOOKS_PAGE_TITLE = "Books";
-    private static final int BOOK_ROW_NUMBER = 3;
+    private static final String ERROR_MESSAGE = "Whitelabel Error Page";
     HomePage homePage = new HomePage();
     BooksPage booksPage = new BooksPage();
+    ErrorPage errorPage = new ErrorPage();
 
     @Test
-    @Description("Verify the Delete option for book")
-    @Severity(NORMAL)
-    @Story("As a user, I should be able to delete a book")
-    public void verifyDeleteBookFlow() {
+    @Description("Verify the left menu panel")
+    @Severity(BLOCKER)
+    @Story("As a user, I should be able to traverse between pages using the options in left menu panel")
+    public void verifyNavBar() {
         verifyHomePageIsLoaded();
         clickBooksLink();
         verifyBooksPageIsLoaded();
-        int countBefore = getTotalBookCount();
-        clickDeleteLink();
-        int countAfter = getTotalBookCount();
-        verifyBookCount(countBefore, countAfter);
+        clickNavBarTitle();
+        verifyHomePageIsLoaded();
+        clickAuthorsLink();
+        verifyErrorPageIsLoaded();
     }
 
     private void verifyHomePageIsLoaded() {
@@ -63,15 +65,15 @@ public class TC008_DeleteBook extends UIBaseTest {
         return booksPage.getPageTitle();
     }
 
-    private int getTotalBookCount() {
-        return booksPage.getTotalBookCount();
+    private void clickNavBarTitle() {
+        booksPage.getLeftMenuPanel().clickHomeLink();
     }
 
-    private void clickDeleteLink() {
-        booksPage.clickDeleteLinkForGivenBookByRowNumber(BOOK_ROW_NUMBER);
+    private void clickAuthorsLink() {
+        homePage.getLeftMenuPanel().clickAuthorsLink();
     }
 
-    private void verifyBookCount(int countBefore, int countAfter) {
-        Assert.assertEquals(countAfter, countBefore - 1);
+    private void verifyErrorPageIsLoaded() {
+        Assert.assertEquals(errorPage.getErrorMessage(), ERROR_MESSAGE);
     }
 }
