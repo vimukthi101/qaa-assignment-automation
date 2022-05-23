@@ -29,6 +29,7 @@ newman run postman-scripts/BookStore-QaaAssignment.postman_collection.json
 How To Run
 
 Run testng.xml (https://github.com/vimukthi101/qaa-assignment-automation/blob/main/testng.xml)
+
 Generate Allure Report, run following command on terminal
 
   allure serve allure-results
