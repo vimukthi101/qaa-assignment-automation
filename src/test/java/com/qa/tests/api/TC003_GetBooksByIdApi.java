@@ -8,6 +8,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
 
+import static com.qa.constants.Constants.BOOK_NOT_FOUND_EXCEPTION;
 import static com.qa.constants.Constants.ERROR_MESSAGE_405;
 import static com.qa.constants.Constants.ERROR_TITLE_400;
 import static com.qa.constants.Constants.ERROR_TITLE_405;
@@ -26,7 +27,6 @@ import static io.qameta.allure.SeverityLevel.NORMAL;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 public class TC003_GetBooksByIdApi extends ApiBaseTest {
-    private static final String BOOK_NOT_FOUND_EXCEPTION = "Book not found exception";
 
     @Test
     @Description("Verify the Get Books By id success API flow")

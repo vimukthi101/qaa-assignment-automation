@@ -9,8 +9,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
+import static com.qa.constants.Constants.NUMBER_ONE;
+import static com.qa.constants.Constants.NUMBER_TEN;
+import static com.qa.constants.Constants.NUMBER_THREE;
+import static com.qa.constants.Constants.NUMBER_TWO;
+import static com.qa.constants.Constants.NUMBER_ZERO;
+
 public class Controller extends UIBasePage {
-    private int timeOut = 10;
+    private int timeOut = NUMBER_TEN;
 
     public void scrollToElement(By element) {
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
@@ -58,8 +64,7 @@ public class Controller extends UIBasePage {
         WebDriverWait wait = new WebDriverWait(getDriver(), timeOut);
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         List<WebElement> rows = element.findElements(By.tagName("tr"));
-        int count = rows.size();
-        return count;
+        return rows.size();
     }
 
     public String getYearFromTableByBookTitle(By locator, String title) {
@@ -67,10 +72,10 @@ public class Controller extends UIBasePage {
         WebDriverWait wait = new WebDriverWait(getDriver(), timeOut);
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         List<WebElement> rows = element.findElements(By.tagName("tr"));
-        for (int r = 0; r < rows.size(); r++) {
-            List<WebElement> cells = rows.get(r).findElements(By.tagName("td"));
-            if (cells.get(0).getText().equals(title)) {
-                year = cells.get(1).getText();
+        for (WebElement row : rows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            if (cells.get(NUMBER_ZERO).getText().equals(title)) {
+                year = cells.get(NUMBER_ONE).getText();
             }
         }
         return year;
@@ -80,10 +85,10 @@ public class Controller extends UIBasePage {
         WebDriverWait wait = new WebDriverWait(getDriver(), timeOut);
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         List<WebElement> rows = element.findElements(By.tagName("tr"));
-        for (int r = 0; r < rows.size(); r++) {
-            List<WebElement> cells = rows.get(r).findElements(By.tagName("td"));
-            if (cells.get(0).getText().equals(title)) {
-                cells.get(2).click();
+        for (WebElement row : rows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            if (cells.get(NUMBER_ZERO).getText().equals(title)) {
+                cells.get(NUMBER_TWO).click();
             }
         }
     }
@@ -93,7 +98,7 @@ public class Controller extends UIBasePage {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         List<WebElement> rows = element.findElements(By.tagName("tr"));
         List<WebElement> cells = rows.get(index).findElements(By.tagName("td"));
-        cells.get(2).click();
+        cells.get(NUMBER_TWO).click();
     }
 
     public String getBookNameByRowNumber(By locator, int index) {
@@ -101,17 +106,17 @@ public class Controller extends UIBasePage {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         List<WebElement> rows = element.findElements(By.tagName("tr"));
         List<WebElement> cells = rows.get(index).findElements(By.tagName("td"));
-        return cells.get(0).getText();
+        return cells.get(NUMBER_ZERO).getText();
     }
 
     public void clickDeleteInTableByBookTitle(By locator, String title) {
         WebDriverWait wait = new WebDriverWait(getDriver(), timeOut);
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         List<WebElement> rows = element.findElements(By.tagName("tr"));
-        for (int r = 0; r < rows.size(); r++) {
-            List<WebElement> cells = rows.get(r).findElements(By.tagName("td"));
-            if (cells.get(0).getText().equals(title)) {
-                cells.get(3).click();
+        for (WebElement row : rows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            if (cells.get(NUMBER_ZERO).getText().equals(title)) {
+                cells.get(NUMBER_THREE).click();
             }
         }
     }
@@ -121,6 +126,6 @@ public class Controller extends UIBasePage {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         List<WebElement> rows = element.findElements(By.tagName("tr"));
         List<WebElement> cells = rows.get(index).findElements(By.tagName("td"));
-        cells.get(3).click();
+        cells.get(NUMBER_THREE).click();
     }
 }

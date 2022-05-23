@@ -10,6 +10,7 @@ import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static com.qa.constants.Constants.WHITELABEL_ERROR_MESSAGE;
 import static io.qameta.allure.SeverityLevel.CRITICAL;
 
 public class TC002_VerifyTheSearchBar extends UIBaseTest {
@@ -17,7 +18,6 @@ public class TC002_VerifyTheSearchBar extends UIBaseTest {
     private static final String APPLICATION_TITLE = "Project name";
     private static final String BOOKS_PAGE_TITLE = "Books";
     private static final String SEARCH_TEXT = "Christ Recrucified";
-    private static final String ERROR_MESSAGE = "Whitelabel Error Page";
     HomePage homePage = new HomePage();
     BooksPage booksPage = new BooksPage();
     ErrorPage errorPage = new ErrorPage();
@@ -69,6 +69,6 @@ public class TC002_VerifyTheSearchBar extends UIBaseTest {
     }
 
     private void verifyErrorPageIsLoaded() {
-        Assert.assertEquals(errorPage.getErrorMessage(), ERROR_MESSAGE);
+        Assert.assertEquals(errorPage.getErrorMessage(), WHITELABEL_ERROR_MESSAGE);
     }
 }

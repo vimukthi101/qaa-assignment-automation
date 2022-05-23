@@ -9,13 +9,14 @@ import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static com.qa.constants.Constants.NUMBER_ONE;
+import static com.qa.constants.Constants.NUMBER_THREE;
 import static io.qameta.allure.SeverityLevel.NORMAL;
 
 public class TC008_DeleteBook extends UIBaseTest {
     private static final String HOME_BODY_CONTENT = "Hello Test Automation Engineer!!";
     private static final String APPLICATION_TITLE = "Project name";
     private static final String BOOKS_PAGE_TITLE = "Books";
-    private static final int BOOK_ROW_NUMBER = 3;
     HomePage homePage = new HomePage();
     BooksPage booksPage = new BooksPage();
 
@@ -68,10 +69,10 @@ public class TC008_DeleteBook extends UIBaseTest {
     }
 
     private void clickDeleteLink() {
-        booksPage.clickDeleteLinkForGivenBookByRowNumber(BOOK_ROW_NUMBER);
+        booksPage.clickDeleteLinkForGivenBookByRowNumber(NUMBER_THREE);
     }
 
     private void verifyBookCount(int countBefore, int countAfter) {
-        Assert.assertEquals(countAfter, countBefore - 1);
+        Assert.assertEquals(countAfter, countBefore - NUMBER_ONE);
     }
 }

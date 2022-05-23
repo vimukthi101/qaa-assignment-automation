@@ -10,6 +10,8 @@ import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static com.qa.constants.Constants.NUMBER_THREE;
+import static com.qa.constants.Constants.TITLE_ERROR_MESSAGE;
 import static io.qameta.allure.SeverityLevel.MINOR;
 
 public class TC007_ClearButtonAtEditBook extends UIBaseTest {
@@ -19,8 +21,6 @@ public class TC007_ClearButtonAtEditBook extends UIBaseTest {
     private static final String EDIT_BOOKS_PAGE_TITLE = "Edit Book";
     private static final String NEW_BOOK_TITLE = "Updated Book Title";
     private static final String BOOK_YEAR = "2022";
-    private static final String ERROR_MESSAGE = "Title should have at least 8 characters";
-    private static final int BOOK_ROW_NUMBER = 3;
     HomePage homePage = new HomePage();
     BooksPage booksPage = new BooksPage();
     EditBookPage editBookPage = new EditBookPage();
@@ -72,7 +72,7 @@ public class TC007_ClearButtonAtEditBook extends UIBaseTest {
     }
 
     private void clickEditLinkOfBook() {
-        booksPage.clickEditLinkForGivenBookByRowNumber(BOOK_ROW_NUMBER);
+        booksPage.clickEditLinkForGivenBookByRowNumber(NUMBER_THREE);
     }
 
     private void verifyEditBookPageIsLoaded() {
@@ -92,6 +92,6 @@ public class TC007_ClearButtonAtEditBook extends UIBaseTest {
     }
 
     private void verifyErrorMessageIsVisible() {
-        Assert.assertEquals(editBookPage.getErrorMessage(), ERROR_MESSAGE);
+        Assert.assertEquals(editBookPage.getErrorMessage(), TITLE_ERROR_MESSAGE);
     }
 }

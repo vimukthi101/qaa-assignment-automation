@@ -10,6 +10,8 @@ import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static com.qa.constants.Constants.NUMBER_ONE;
+import static com.qa.constants.Constants.TITLE_ERROR_MESSAGE;
 import static io.qameta.allure.SeverityLevel.CRITICAL;
 
 public class TC004_CreateNewBook extends UIBaseTest {
@@ -17,7 +19,6 @@ public class TC004_CreateNewBook extends UIBaseTest {
     private static final String APPLICATION_TITLE = "Project name";
     private static final String BOOKS_PAGE_TITLE = "Books";
     private static final String CREATE_BOOKS_PAGE_TITLE = "Create Book";
-    private static final String ERROR_MESSAGE = "Title should have at least 8 characters";
     private static final String BOOK_TITLE_ONE = "Hello";
     private static final String BOOK_TITLE_TWO = "Hello World";
     private static final String BOOK_YEAR = "2022";
@@ -93,7 +94,7 @@ public class TC004_CreateNewBook extends UIBaseTest {
     }
 
     private void verifyErrorMessageIsVisible() {
-        Assert.assertEquals(createBookPage.getErrorMessage(), ERROR_MESSAGE);
+        Assert.assertEquals(createBookPage.getErrorMessage(), TITLE_ERROR_MESSAGE);
     }
 
     private void createNewBook(String bookTitleOne) {
@@ -101,6 +102,6 @@ public class TC004_CreateNewBook extends UIBaseTest {
     }
 
     private void verifyBookCount(int countBefore, int countAfter) {
-        Assert.assertEquals(countAfter, countBefore + 1);
+        Assert.assertEquals(countAfter, countBefore + NUMBER_ONE);
     }
 }
