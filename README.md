@@ -30,6 +30,7 @@ How To Run
 
 Run testng.xml (https://github.com/vimukthi101/qaa-assignment-automation/blob/main/testng.xml)
 Generate Allure Report, run following command on terminal
+
   allure serve allure-results
 
 ![image](https://user-images.githubusercontent.com/20500564/169751393-eff84027-6a23-4bf1-8e40-f343dbe974bd.png)
