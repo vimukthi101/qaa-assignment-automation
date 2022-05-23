@@ -25,4 +25,7 @@ public class Constants {
     //other
     public static final String FORWARD_SLASH = "/";
     public static final String EMPTY_STRING = "";
+
+    //numbers
+    public static final int NUMBER_ONE = 1;
 }

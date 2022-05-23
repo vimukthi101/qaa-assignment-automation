@@ -14,6 +14,7 @@ import static com.qa.constants.Constants.ERROR_MESSAGE_405;
 import static com.qa.constants.Constants.ERROR_TITLE_400;
 import static com.qa.constants.Constants.ERROR_TITLE_405;
 import static com.qa.constants.Constants.FORWARD_SLASH;
+import static com.qa.constants.Constants.NUMBER_ONE;
 import static com.qa.constants.Constants.STATUS_CODE_200;
 import static com.qa.constants.Constants.STATUS_CODE_400;
 import static com.qa.constants.Constants.STATUS_CODE_405;
@@ -23,7 +24,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 public class TC006_CreateGateway extends ApiBaseTest {
     private static int authorId;
-    private static final int BOOK_AUTHOR_ID = 1;
+    private static final int BOOK_AUTHOR_ID = NUMBER_ONE;
     private static final String BOOK_TITLE = "My test book 1";
     private static final String BOOK_YEAR = "2022";
     private static final String BOOK_CATEGORY = "COMEDY";
@@ -36,6 +37,7 @@ public class TC006_CreateGateway extends ApiBaseTest {
     BookDTO bookDTO_withEmptyYear = new BookDTO(BOOK_TITLE, EMPTY_STRING, BOOK_AUTHOR_ID, BOOK_CATEGORY);
     BookDTO bookDTO_withEmptyAuthorId = new BookDTO(BOOK_TITLE, BOOK_YEAR, authorId, BOOK_CATEGORY);
     BookDTO bookDTO_withEmptyCategory = new BookDTO(BOOK_TITLE, BOOK_YEAR, BOOK_AUTHOR_ID, EMPTY_STRING);
+    BookDTO bookDTO_withInvalidCategory = new BookDTO(BOOK_TITLE, BOOK_YEAR, BOOK_AUTHOR_ID, "HELLO");
 
     @Test
     @Description("Verify the Create Books API success flow")
@@ -179,6 +181,25 @@ public class TC006_CreateGateway extends ApiBaseTest {
                 .given().log().ifValidationFails()
                 .when()
                 .body(bookDTO_withEmptyCategory)
+                .header("Content-Type", "application/json")
+                .post(FORWARD_SLASH + GATEWAY_ENDPOINT)
+                .then()
+                .log().ifError()
+                .contentType(ContentType.JSON)
+                .body("status", equalTo(STATUS_CODE_400))
+                .body("error", equalTo(ERROR_TITLE_400))
+                .statusCode(STATUS_CODE_400);
+    }
+
+    @Test
+    @Description("Verify the Create Books API with Invalid Category")
+    @Severity(NORMAL)
+    @Story("As a user, I should be able to get an error message when Category is Invalid")
+    public void verifyInvalidCategory() {
+        RestAssured
+                .given().log().ifValidationFails()
+                .when()
+                .body(bookDTO_withInvalidCategory)
                 .header("Content-Type", "application/json")
                 .post(FORWARD_SLASH + GATEWAY_ENDPOINT)
                 .then()

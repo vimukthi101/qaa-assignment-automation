@@ -12,6 +12,7 @@ import static com.qa.constants.Constants.ERROR_MESSAGE_405;
 import static com.qa.constants.Constants.ERROR_TITLE_400;
 import static com.qa.constants.Constants.ERROR_TITLE_405;
 import static com.qa.constants.Constants.FORWARD_SLASH;
+import static com.qa.constants.Constants.NUMBER_ONE;
 import static com.qa.constants.Constants.STATUS_CODE_200;
 import static com.qa.constants.Constants.STATUS_CODE_400;
 import static com.qa.constants.Constants.STATUS_CODE_404;
@@ -58,7 +59,7 @@ public class TC004_GetGateway extends ApiBaseTest {
                 .log().ifError()
                 .contentType(ContentType.JSON)
                 .body("message", equalTo(BOOK_NOT_FOUND_EXCEPTION))
-                .body("code", equalTo(1))
+                .body("code", equalTo(NUMBER_ONE))
                 .statusCode(STATUS_CODE_404);
     }
 
@@ -87,7 +88,7 @@ public class TC004_GetGateway extends ApiBaseTest {
         RestAssured
                 .given().log().ifValidationFails()
                 .when()
-                .delete(FORWARD_SLASH + 123 + FORWARD_SLASH + GATEWAY_ENDPOINT)
+                .delete(FORWARD_SLASH + WAR_AND_PEACE_BOOK_ID + FORWARD_SLASH + GATEWAY_ENDPOINT)
                 .then()
                 .log().ifError()
                 .contentType(ContentType.JSON)
