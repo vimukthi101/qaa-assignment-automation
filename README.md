@@ -22,9 +22,9 @@ newman run postman-scripts/BookStore-QaaAssignment.postman_collection.json
 
 ---
 
-RestAssured API Scripts : com.qa.tests.api (https://github.com/vimukthi101/qaa-assignment-automation/tree/main/src/test/java/com/qa/tests/api)
+#### RestAssured API Scripts : com.qa.tests.api (https://github.com/vimukthi101/qaa-assignment-automation/tree/main/src/test/java/com/qa/tests/api)
 
-Selenium UI Scripts : com.qa.tests.ui (https://github.com/vimukthi101/qaa-assignment-automation/tree/main/src/test/java/com/qa/tests/ui)
+#### Selenium UI Scripts : com.qa.tests.ui (https://github.com/vimukthi101/qaa-assignment-automation/tree/main/src/test/java/com/qa/tests/ui)
 
 How To Run
 
